@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   minWidth="955" minHeight="600"  deactivate="showEvent(event)"
+			   focusIn="showEvent(event)" focusOut="showEvent(event)"
+			   hide="showEvent(event)" invalid="showEvent(event)" remove="showEvent(event)"
+			   removed="showEvent(event)" removedFromStage="showEvent(event)"
+			   show="showEvent(event)"
+			   stateChangeComplete="showEvent(event)" touchBegin="showEvent(event)"
+			   updateComplete="showEvent(event)" valid="showEvent(event)"
+			   valueCommit="showEvent(event)">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import mx.graphics.ImageSnapshot;
+			private function showEvent(e:Event):void {
+				ImageSnapshot;
+				trace("Event " + e.type);
+				if(e.type == "deactivate"){
+					Alert.show(e.type);
+				}
+				
+				if(e.type == "deactivate"){
+					Alert.show(e.type);
+				}
+			}
+		]]>
+	</fx:Script>
+	
+	<s:Label text="Test event"/>
+	<s:Button label="Button"/>
+		
+</s:Application>

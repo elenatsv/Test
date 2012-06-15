@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Test_integration" basedir="." default="compileProject">
+    <!-- file description -->
+    <description>Build Script</description>
+
+    <!--location of property file -->
+    <property file="./build.properties" description="properities for builds" />
+
+    <!-- timestamp -->
+    <tstamp>
+        <format property="timestamp" pattern="yyyyMMdd" />
+    </tstamp>
+	
+    <!-- additional tasks -->
+<!--    <taskdef resource="flexTasks.tasks" classpath="${FlexTasks.file}" />	-->
+	<taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar" />
+
+	<target name="cleanDeploy" description="Cleans the deploy file">
+	        <echo>Deleting Deploy Directory...</echo>
+	        <delete dir="${Deploy.dir}" failOnError="false" includeEmptyDirs="true" />
+	        <echo>Deleted Deploy Directory</echo>
+	        <echo>Creating Deploy Directory...</echo>
+	        <mkdir dir="${Deploy.dir}" />
+	        <echo>Created Deploy Directory</echo>
+	    </target>
+	
+	<target name="compileApplication">
+	        <echo>Compiling SWF To Deploy</echo>
+	        <mxmlc file="${Src.dir}/${Application.name}.mxml" incremental="false" actionscript-file-encoding="UTF-8"
+	            output="${Deploy.dir}/${Application.name}${timestamp}.swf" debug="${Debug.Boolean}" keep-generated-actionscript="false">
+	            <load-config filename="${FLEX_HOME}/frameworks/flex-config.xml" />
+	            <default-background-color>0xFFFFFF</default-background-color>
+	            <metadata>
+	                <creator>Elena Tsvetkova</creator>
+	                <publisher>elenatsv</publisher>
+	                <language>EN</language>
+	            </metadata>
+	            <compiler.source-path path-element="${Src.dir}" />
+	        </mxmlc>
+	        <echo>Compiled SWF To Deploy</echo>
+	    </target>	
+	
+    <target name="compileProject"
+        depends="cleanDeploy,compileApplication"
+        description="compiles application"/>
+	
+</project>

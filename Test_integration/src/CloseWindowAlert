@@ -1,0 +1,10 @@
+<script type="text/javascript">
+    function warning()
+    {
+        return ""; //U can write any custom message here.
+    }
+    window.onbeforeunload = warning;
+</script>
+
+
+http://cookbooks.adobe.com/post_LCDS__Displaying_pictures_dynamically_loaded_by_Fl-13267.html
